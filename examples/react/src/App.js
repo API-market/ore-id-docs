@@ -1,16 +1,23 @@
 import dotenv from 'dotenv';
 import React, { Component } from 'react';
-import LoginButton from './components/loginButton';
 import { OreId } from 'eos-auth';
 import scatterProvider from 'eos-transit-scatter-provider';
-import ledgerProvider from 'eos-transit-ledger-provider';
+import ledgerProvider from 'eos-transit-ledger-provider'
 import lynxProvider from 'eos-transit-lynx-provider';
 import meetoneProvider from 'eos-transit-meetone-provider';
 import tokenpocketProvider from 'eos-transit-tokenpocket-provider';
-import whalevaultProvider from 'eos-transit-whalevault-provider';
-import simpleosProvider from 'eos-transit-simpleos-provider';
-import keycatProvider from 'eos-transit-keycat-provider';
+import whalevaultProvider from 'eos-transit-whalevault-provider'
+import simpleosProvider from 'eos-transit-simpleos-provider'
+import keycatProvider from 'eos-transit-keycat-provider'
 // import portisProvider from 'eos-transit-portis-provider'
+
+// import { Scatter } from 'ual-scatter'
+// import { Lynx } from 'ual-lynx'
+// import { Ledger } from 'ual-ledger'
+// import { MeetOne } from 'ual-meetone'
+// import { TokenPocket } from 'ual-token-pocket'
+
+import LoginButton from './components/loginButton';
 
 dotenv.config();
 
@@ -27,7 +34,7 @@ const {
 
 let eosTransitWalletProviders = [
   scatterProvider(),
-  ledgerProvider({ pathIndexList: [0, 1, 2, 35] }),
+  ledgerProvider({ pathIndexList: [ 0, 1, 2, 35 ] }),
   lynxProvider(),
   meetoneProvider(),
   tokenpocketProvider(),
@@ -38,6 +45,14 @@ let eosTransitWalletProviders = [
   //   DappId: 'ENTER_YOUR_DappId_HERE'
   // }),
 ];
+
+let ualProviders = [
+  // Scatter,
+  // Lynx,
+  // Ledger,
+  // MeetOne,
+  // TokenPocket,
+]
 
 class App extends Component {
   constructor(props) {
@@ -55,7 +70,18 @@ class App extends Component {
 setBusyCallback = (isBusy) => {this.setState({ isBusy });};
 
 // intialize oreId
-oreId = new OreId({ appName:'ORE ID Sample App', appId, apiKey, oreIdUrl, authCallbackUrl, signCallbackUrl, backgroundColor, eosTransitWalletProviders, setBusyCallback:this.setBusyCallback });
+oreId = new OreId({
+  appName: 'ORE ID Sample App',
+  appId,
+  apiKey,
+  oreIdUrl,
+  authCallbackUrl,
+  signCallbackUrl,
+  backgroundColor,
+  eosTransitWalletProviders,
+  ualProviders,
+  setBusyCallback: this.setBusyCallback
+});
 
 async componentWillMount() {
   this.loadUserFromLocalState();
@@ -399,6 +425,11 @@ renderSignButtons = (permissions) => permissions.map((permission, index) => {
           buttonStyle={{ width:250, marginTop:'24px' }}
           logoStyle={{ marginLeft:0 }}
           onClick={() => this.handleLogin('lynx')}
+        />
+        <LoginButton provider='tokenpocket'
+          buttonStyle={{ width:250, marginTop:'24px' }}
+          logoStyle={{ marginLeft:0 }}
+          onClick={() => this.handleLogin('tockenpocket')}
         />
         <LoginButton provider='portis'
           buttonStyle={{ width:250, marginTop:'24px' }}
