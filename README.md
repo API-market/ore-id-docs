@@ -10,7 +10,7 @@ With ORE ID, users of your web or mobile app get an on-chain account upon first 
 
 ORE ID also serves as a blockchain wallet for your your users. Your app can request a user to sign a transaction using their PIN to decrypt their keys.
 
-ORE ID is the easiest way to add support for Scatter, Ledger Nano S, Metro and every other EOS wallet that supports the new [Transit API](https://github.com/eosnewyork/eos-transit) standard. Just add our eos-auth library and your app will instantly support these popular wallets.
+ORE ID is the easiest way to add support for Scatter, Ledger Nano S, Metro and every other EOS wallet that supports the new [Transit API](https://github.com/eosnewyork/eos-transit) standard or [UAL](https://github.com/EOSIO/universal-authenticator-library). Just add our eos-auth library and your app will instantly support these popular wallets.
 
 ORE ID removes the friction between your app and your future users. 
 
@@ -107,6 +107,10 @@ Refer to the examples folder for the following sample projects
 - React Native - A React Native app that includes a React OAuth flow modal component
 
 - Express Server - A simple Express server that includes the use of middleware to automate handling of callbacks
+
+## Warnings
+
+When integrating with Transit or UAL the providers are interchangeable. You can switch between ual-lynx and transit-lynx but only one is allowed at any given time, attempting to pass in duplicate providers will result in an error. 
 
 
 [Frequently Asked Questions](https://drive.google.com/open?id=1Nx6qm7z8TQRM8S-onmcP0H--21z-gzYDBVEzzfcgE9g)

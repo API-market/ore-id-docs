@@ -10,7 +10,7 @@
     "eos-transit-lynx-provider": "^3.1.0",
     "eos-transit-meetone-provider": "^3.1.0",
     "eos-transit-portis-provider": "^3.1.4",
-    "eos-transit-scatter-provider": "^3.2.0",
+    "eos-transit-scatter-provider": "^4.0.0",
     "eos-transit-simpleos-provider": "^3.1.6",
     "eos-transit-tokenpocket-provider": "^3.1.2",
     "eos-transit-whalevault-provider": "^3.1.5",
@@ -18,7 +18,12 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router": "^5.0.1",
-    "react-scripts": "^3.0.1"
+    "react-scripts": "^3.0.1",
+    "ual-ledger": "^0.1.2",
+    "ual-lynx": "^0.1.1",
+    "ual-meetone": "^0.1.1",
+    "ual-scatter": "^0.1.3",
+    "ual-token-pocket": "^0.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
